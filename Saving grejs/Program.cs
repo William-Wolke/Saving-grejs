@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Saving_grejs
 {
@@ -6,7 +8,7 @@ namespace Saving_grejs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //MovingPlatform myMovingPlatform = new MovingPlatform;
         }
     }
 }
