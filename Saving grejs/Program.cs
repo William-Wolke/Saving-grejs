@@ -10,13 +10,14 @@ namespace Saving_grejs
         {
             MovingPlatform myMovingPlatform = new MovingPlatform();
 
+            XmlSerializer serializer = new XmlSerializer(typeof(MovingPlatform));
+
+            FileStream file = File.Open("MovingPlatforms.xml", FileMode.OpenOrCreate);
+
+
             bool isDone = false;
 
-            bool stepOne = false;
-
-            bool stepTwo = false;
-
-            bool stepThree = false;
+            bool[] steps = {false, false, false};
 
             string x;
 
@@ -39,7 +40,11 @@ namespace Saving_grejs
                 bool isItANumber = int.TryParse(x, out x2);
 
                 if (isItANumber == true) {
-                    stepOne = true;
+                    steps[0] = true;
+                }
+
+                else {
+                    System.Console.WriteLine("Det var inte ett nummer");
                 }
 
                 isItANumber = false;
@@ -51,7 +56,11 @@ namespace Saving_grejs
                 isItANumber = int.TryParse(y, out y2);
 
                 if (isItANumber == true) {
-                    stepTwo = true;
+                    steps[1] = true;
+                }
+
+                else {
+                    System.Console.WriteLine("Det var inte ett nummer");
                 }
 
                 isItANumber = false;
@@ -63,10 +72,21 @@ namespace Saving_grejs
                 isItANumber = int.TryParse(y, out y2);
 
                 if (isItANumber == true) {
-                    stepThree = true;
+                    steps[2] = true;
                 }
 
-                if ();
+                else {
+                    System.Console.WriteLine("Det var inte ett nummer");
+                }
+
+                if (steps[0] == true && steps[1] == true && steps[2] == true) {
+                    isDone = true;
+                }
+
+                System.Console.WriteLine("Shallom");
+                file.Close();
+                System.Console.ReadLine();
+            }
         }
     }
 }
