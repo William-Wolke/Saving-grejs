@@ -10,11 +10,6 @@ namespace Saving_grejs
         {
             MovingPlatform myMovingPlatform = new MovingPlatform();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(MovingPlatform));
-
-            FileStream file = File.Open("MovingPlatforms.xml", FileMode.OpenOrCreate);
-
-
             bool isDone = false;
 
             bool[] steps = {false, false, false};
@@ -29,7 +24,7 @@ namespace Saving_grejs
 
             int y2;
 
-            float speed2;
+            int speed2;
             
             while (isDone == false) {
 
@@ -41,6 +36,7 @@ namespace Saving_grejs
 
                 if (isItANumber == true) {
                     steps[0] = true;
+                    myMovingPlatform.x = x2;
                 }
 
                 else {
@@ -51,12 +47,13 @@ namespace Saving_grejs
 
                 Console.WriteLine("Vad är plattformens y värde");
 
-                y = Console.ReadLine();
+                 y = Console.ReadLine();
 
                 isItANumber = int.TryParse(y, out y2);
 
                 if (isItANumber == true) {
                     steps[1] = true;
+                    myMovingPlatform.y = y2;
                 }
 
                 else {
@@ -67,12 +64,13 @@ namespace Saving_grejs
 
                  Console.WriteLine("Vad är plattformens hastighet");
 
-                y = Console.ReadLine();
+                speed = Console.ReadLine();
 
-                isItANumber = int.TryParse(y, out y2);
+                isItANumber = int.TryParse(speed, out speed2);
 
                 if (isItANumber == true) {
                     steps[2] = true;
+                    myMovingPlatform.speed = speed2;
                 }
 
                 else {
@@ -84,6 +82,15 @@ namespace Saving_grejs
                 }
 
                 System.Console.WriteLine("Shallom");
+
+                //File.WriteAllLines("lines.txt");
+
+                XmlSerializer serializer = new XmlSerializer(typeof(MovingPlatform));
+
+                FileStream file = File.Open(@"MovingPlatforms.xml", FileMode.OpenOrCreate);
+            
+                serializer.Serialize(file, myMovingPlatform);
+
                 file.Close();
                 System.Console.ReadLine();
             }

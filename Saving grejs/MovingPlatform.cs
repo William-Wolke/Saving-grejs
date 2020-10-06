@@ -4,8 +4,8 @@ namespace Saving_grejs
 {
     public class MovingPlatform
     {
-        int x;
-        int y;
-        float speed;
+        public int x;
+        public int y;
+        public float speed;
     }
 }
